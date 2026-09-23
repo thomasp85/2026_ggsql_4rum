@@ -244340,7 +244340,7 @@ async function initAndExecute(cells) {
   return ctx;
 }
 var DEBOUNCE_MS = 100;
-var DEFAULT_ASPECT = 7 / 5;
+var DEFAULT_ASPECT = 504 / 540;
 function showPlot(cell) {
   if (!cell.plot) return;
   if (!cell.visContainer) {
