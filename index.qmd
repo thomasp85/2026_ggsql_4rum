@@ -1,0 +1,579 @@
+---
+pagetitle: "A grammar of graphics for SQL"
+format:
+  revealjs:
+    theme: [default, custom.scss]
+    slide-number: true
+    footer: "[ggsql](https://ggsql.org)"
+    syntax-definitions:
+      - ggsql.xml
+    include-after-body:
+      - text: |
+          <script>
+            // The ggsql wasm runtime expects a .cell-output.cell-output-display
+            // container per cell, which Quarto only emits for executed cells.
+            // Create one for each ggsql cell before the runtime loads.
+            document.querySelectorAll('code.sourceCode.ggsql').forEach((codeEl) => {
+              const cell = codeEl.closest('.cell');
+              if (cell && !cell.querySelector('.cell-output.cell-output-display')) {
+                const out = document.createElement('div');
+                out.className = 'cell-output cell-output-display';
+                cell.appendChild(out);
+              }
+            });
+          </script>
+          <script>
+            // Keep revealjs keyboard shortcuts (e.g. 'b' for blackout) from
+            // firing while typing in a Monaco editor. Bubble-phase on document:
+            // the event reaches the editor's textarea first, and this listener
+            // is registered before revealjs's own document handler, so
+            // stopImmediatePropagation blocks only revealjs.
+            document.addEventListener('keydown', (e) => {
+              if (e.target.closest && e.target.closest('.monaco-editor')) {
+                e.stopImmediatePropagation();
+              }
+            });
+          </script>
+          <script type="module">
+            const base = './wasm/';
+            const link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.href = base + 'quarto.css';
+            document.head.appendChild(link);
+            import(base + 'quarto.js');
+          </script>
+resources:
+  - wasm/**
+execute:
+  echo: true
+---
+
+::: {#title-slide}
+![](assets/hex.png){.nostretch width="280"}
+
+[A grammar of graphics for SQL]{.title}
+
+[Thomas Lin Pedersen]{.quarto-title-author}
+
+[25th September 2026]{style="font-size:0.8em;"}
+:::
+
+## Why am I speaking to you?
+
+* Software engineer at Posit, PBC
+* If you have created graphics in R, my code has probably been involved
+* I'm creating something new and exciting
+
+* * *
+
+![](assets/always_has_been.jpg)
+
+* * *
+
+![](assets/stickermap.png)
+
+## {auto-animate="true" .center}
+
+![](assets/ggplot2.png){fig-align="center"}
+
+## {auto-animate="true" .center}
+
+::: {.columns}
+::: {.column}
+![](assets/ggplot2.png)
+:::
+
+::: {.column}
+![](assets/8_years.jpg)
+:::
+:::
+
+## {auto-animate="true" .center}
+
+::: {.columns}
+::: {.column width="35%"}
+![](assets/ggplot2.png)
+:::
+
+::: {.column width="30%"}
+[+ SQL =]{.equation}
+:::
+
+::: {.column width="35%"}
+![](assets/hex.png)
+:::
+:::
+
+## Why am I speaking to you? {auto-animate="true"}
+
+![](assets/hex.png)
+
+## {.center}
+
+::: {style="text-align: center;"}
+[Why ggsql?]{style="font-size:3em;"}
+:::
+
+## Why ggsql?
+
+* SQL is hugely influential and still heavily used
+* Many SQL-first or SQL-only data scientists and analysts
+* They are massively under-served in tooling *and* visualization
+* GoG and SQL just fits so good together that it would be criminal not to
+
+## A bit about SQL
+
+* One of the oldest programming language still in use
+* Based on Relational Algebra (same theoretical backbone as dplyr)
+* ANSI SQL (the standard) has been joined by many dialects
+* **DECLARATIVE**
+* **TABULAR**
+
+## A bit about grammar of graphics
+
+* A theoretical deconstruction of standard plots into core parts
+* A theory with many implementations (ggplot2, Vega, D3)
+* **DECLARATIVE**
+* **TABULAR**
+
+## A bit about grammar of graphics
+
+![](assets/gog.svg)
+
+
+## A bit about grammar of graphics {.gog-focus-1}
+
+::: {.columns}
+
+:::: {.column}
+
+```{=html}
+{{< include assets/gog.svg >}}
+```
+::::
+
+:::: {.column}
+* Raw data you want to plot
+* In tabular form, one record per row (tidy format)
+::::
+
+:::
+
+## A bit about grammar of graphics {.gog-focus-2}
+
+::: {.columns}
+
+:::: {.column}
+
+```{=html}
+{{< include assets/gog.svg >}}
+```
+::::
+
+:::: {.column}
+* How columns relate to visual aesthetics
+* How columns relate to statistical properties
+::::
+
+:::
+
+## A bit about grammar of graphics {.gog-focus-3}
+
+::: {.columns}
+
+:::: {.column}
+
+```{=html}
+{{< include assets/gog.svg >}}
+```
+::::
+
+:::: {.column}
+* Transformation of observation into derived statistics
+* E.g. binning for a histogram
+::::
+
+:::
+
+## A bit about grammar of graphics {.gog-focus-4}
+
+::: {.columns}
+
+:::: {.column}
+
+```{=html}
+{{< include assets/gog.svg >}}
+```
+::::
+
+:::: {.column}
+* Mapping of measured values to the aesthetic domain
+* Definition of mapping function 
+::::
+
+:::
+
+## A bit about grammar of graphics {.gog-focus-5}
+
+::: {.columns}
+
+:::: {.column}
+
+```{=html}
+{{< include assets/gog.svg >}}
+```
+::::
+
+:::: {.column}
+* How to visually represent data
+  - point
+  - rectangle
+  - area
+::::
+
+:::
+
+## A bit about grammar of graphics {.gog-focus-6}
+
+::: {.columns}
+
+:::: {.column}
+
+```{=html}
+{{< include assets/gog.svg >}}
+```
+::::
+
+:::: {.column}
+* Which subset(s) of data to show
+* and how...
+::::
+
+:::
+
+## A bit about grammar of graphics {.gog-focus-7}
+
+::: {.columns}
+
+:::: {.column}
+
+```{=html}
+{{< include assets/gog.svg >}}
+```
+::::
+
+:::: {.column}
+* How the positional aesthetics relate spatially
+  - cartesian
+  - polar
+  - ternary
+::::
+
+:::
+
+## A bit about grammar of graphics {.gog-focus-8}
+
+::: {.columns}
+
+:::: {.column}
+
+```{=html}
+{{< include assets/gog.svg >}}
+```
+::::
+
+:::: {.column}
+* Non-data-driven styling
+  - Title font
+  - Panel background color
+  - Grid line width
+::::
+
+:::
+
+## SQL and GoG {auto-animate="true"}
+
+::: {.quadrants}
+::: {data-id="box1" style="background:rgb(219,100,100);"}
+[Declarative]{auto-animate-target="none"}
+:::
+
+::: {data-id="box2" style="background:rgb(10,147,150);"}
+[Modular]{auto-animate-target="none"}
+:::
+
+::: {data-id="box3" style="background:rgb(233,216,166);"}
+[Composable]{auto-animate-target="none"}
+:::
+
+::: {data-id="box4" style="background:rgb(178,137,177);"}
+[Speakable]{auto-animate-target="none"}
+:::
+:::
+
+## SQL and GoG {auto-animate="true"}
+
+::: {.stack-with-text}
+::: {.stack-left}
+::: {data-id="box1" style="background:rgb(219,100,100);"}
+:::
+
+::: {data-id="box2" style="background:rgb(10,147,150);"}
+:::
+
+::: {data-id="box3" style="background:rgb(233,216,166);"}
+:::
+
+::: {data-id="box4" style="background:rgb(178,137,177);"}
+:::
+:::
+
+::: {.stack-text}
+* These qualities makes for exceptional software
+* They are good for humans
+* They are good for LLMs
+:::
+:::
+
+## {.center}
+
+::: {style="text-align: center;"}
+[Demo time]{style="font-size:3em;"}
+:::
+
+## [&#8201;]{.rhombus style="background:rgb(0,18,25);"} Data
+
+```{ggsql}
+SELECT * FROM ggsql:penguins
+LIMIT 14
+```
+
+* * *
+
+## [&#8201;]{.rhombus style="background:rgb(233,216,166);"} Mappings
+
+```{ggsql}
+SELECT * FROM ggsql:penguins
+VISUALIZE 
+  bill_len AS x, 
+  bill_dep AS y, 
+  species AS fill
+DRAW point
+
+/*
+penguins |>
+  ggplot(
+    aes(
+      x = bill_len, 
+      y = bill_dep, 
+      color = species
+    )
+  ) + 
+  geom_point()
+*/
+```
+
+* * *
+
+## [&#8201;]{.rhombus style="background: #F9F9F9;"} Statistics
+
+```{ggsql}
+SELECT * FROM ggsql:penguins
+VISUALIZE 
+  species AS x, 
+  body_mass AS y,
+  species AS fill
+DRAW boxplot
+
+/*
+penguins |>
+  ggplot(
+    aes(
+      x = species, 
+      y = body_mass, 
+      color = species
+    )
+  ) + 
+  geom_boxplot()
+*/
+```
+
+* * *
+
+## [&#8201;]{.rhombus style="background: #F9F9F9;"} Statistics
+
+```{ggsql}
+SELECT * FROM ggsql:penguins
+VISUALIZE 
+  bill_dep AS x, 
+  bill_len AS y
+DRAW point
+  MAPPING species AS fill
+DRAW point
+  SETTING 
+    aggregate => 'mean',
+    fill => 'red',
+    size => 15
+  PARTITION BY species
+```
+
+* * *
+
+## [&#8201;]{.rhombus style="background: #F9F9F9;"} Statistics
+
+```{ggsql}
+SELECT * FROM ggsql:penguins
+VISUALIZE 
+  bill_dep AS x, 
+  bill_len AS y
+DRAW point
+  MAPPING species AS fill
+DRAW range
+  MAPPING bill_len AS ymin, bill_len AS ymax
+  SETTING 
+    aggregate => ('x:mean', 'ymin:min', 'ymax:max')
+  PARTITION BY species
+```
+
+* * *
+
+## [&#8201;]{.rhombus style="background:rgb(148,210,189);"} Scales
+
+```{ggsql}
+SELECT * FROM ggsql:penguins
+VISUALIZE 
+  bill_dep AS x, 
+  bill_len AS y,
+  body_mass AS size
+DRAW point
+SCALE size FROM (0, null) TO (0, 10)
+
+/*
+penguins |>
+  ggplot(
+    aes(
+      x = bill_dep, 
+      y = bill_len, 
+      size = body_mass
+    )
+  ) + 
+  geom_point() + 
+  scale_size(
+    limits = c(0, NA), 
+    range = c(0, 10)
+  )
+*/
+```
+
+* * *
+
+## [&#8201;]{.rhombus style="background:rgb(10,147,150);"} Geometries
+
+```{ggsql}
+SELECT * FROM ggsql:penguins
+VISUALIZE 
+  species AS x, 
+  body_mass AS y,
+  species AS fill
+DRAW boxplot
+  SETTING side => 'left'
+DRAW violin
+  SETTING side => 'right'
+DRAW point
+  MAPPING null AS fill
+  SETTING 
+    position => 'jitter',
+    distribution => 'density',
+    side => 'right',
+    size => 1
+```
+
+* * *
+
+## [&#8201;]{.rhombus style="background:rgb(0,95,115);"} Facets
+
+```{ggsql}
+SELECT * FROM ggsql:penguins
+VISUALIZE 
+  bill_len AS x, 
+  bill_dep AS y, 
+  species AS fill
+DRAW point
+FACET island
+```
+
+* * *
+
+## [&#8201;]{.rhombus style="background:rgb(0,95,115);"} Facets
+
+```{ggsql}
+SELECT * FROM ggsql:penguins
+VISUALIZE 
+  bill_len AS x, 
+  bill_dep AS y, 
+  species AS fill
+DRAW point
+FACET body_mass
+SCALE BINNED panel
+  SETTING breaks => (2000, 3000, 4000, 5000, 6000, 7000)
+```
+
+* * *
+
+## [&#8201;]{.rhombus style="background:rgb(178,137,177);"} Coordinates
+
+```{ggsql}
+SELECT * FROM ggsql:penguins
+VISUALIZE species AS fill
+DRAW bar
+PROJECT TO polar
+```
+
+* * *
+
+## [&#8201;]{.rhombus style="background:rgb(178,137,177);"} Coordinates
+
+```{ggsql}
+#| classes: "visually-hidden"
+INSTALL spatial;
+```
+
+```{ggsql}
+WITH data(island, lat, lon) AS (
+  VALUES
+    ('Torgersen', -64.77, -64.08),
+    ('Dream',    -64.73, -64.23),
+    ('Biscoe',   -65.43, -65.50)
+)
+SELECT * FROM data
+
+VISUALIZE *
+DRAW spatial
+  MAPPING FROM ggsql:world
+DRAW point
+  MAPPING island AS fill
+PROJECT TO orthographic
+  SETTING 
+    origin => (-64.8, -65.1),
+    bounds => (-150000, -150000, 150000, 150000)
+```
+
+* * *
+
+
+## [&#8201;]{.rhombus style="background:rgb(219,100,100);"} Theme
+
+TBD, but...
+
+## [&#8201;]{.rhombus style="background:rgb(219,100,100);"} Theme
+
+```{ggsql}
+VISUALIZE species AS fill, species AS x FROM ggsql:penguins
+DRAW bar
+SCALE fill TO ('steelblue', 'goldenrod', 'forestgreen')
+LABEL 
+  title => 'Distribution of penguin (*Pygoscelis*) species',
+  subtitle => 'This plot focuses on 3 species: {.steelblue *P. adeliae*}, {.goldenrod *P. antarcticus*}, {.forestgreen *P. papua*}'
+```
+
+* * *

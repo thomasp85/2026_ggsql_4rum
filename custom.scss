@@ -1,0 +1,186 @@
+/*-- scss:rules --*/
+
+[class*="gog-focus"] svg > g {
+  transition: opacity 0.4s;
+}
+
+@for $i from 1 through 8 {
+  .gog-focus-#{$i} svg > g {
+    opacity: 0.15;
+  }
+  // Layer $i's diamond (groups 1-8) and its label (groups 9-16)
+  .gog-focus-#{$i} svg > g:nth-child(#{$i}),
+  .gog-focus-#{$i} svg > g:nth-child(#{$i + 8}) {
+    opacity: 1;
+  }
+}
+
+// Four-quadrant slide layout with centered content in each cell
+.reveal .slides section .quadrants {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  height: 75%;
+  gap: 1em;
+}
+
+.reveal .slides section .quadrants > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+// Left column stack (auto-animate target of .quadrants), with text to its right
+.reveal .slides section .stack-with-text {
+  display: flex;
+  gap: 1.5em;
+  height: 75%;
+  align-items: stretch;
+}
+
+.reveal .slides section .stack-left {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  flex: 0 0 40%;
+}
+
+.reveal .slides section .stack-text {
+  flex: 1;
+  align-self: center;
+}
+
+.reveal .slides section .stack-left > div {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+// Prevent text jump during auto-animate: kill paragraph margins in boxes
+.reveal .slides section .quadrants > div p,
+.reveal .slides section .stack-left > div p {
+  margin: 0;
+}
+
+// Optional background fills for quadrant cells (brand palette)
+.reveal .slides section .quadrants > div.bg-darkteal   { background-color: $brand-darkteal; color: $brand-white; }
+.reveal .slides section .quadrants > div.bg-teal       { background-color: $brand-teal; color: $brand-white; }
+.reveal .slides section .quadrants > div.bg-lightteal  { background-color: $brand-lightteal; }
+.reveal .slides section .quadrants > div.bg-paleyellow { background-color: $brand-paleyellow; }
+.reveal .slides section .quadrants > div.bg-paleteal   { background-color: $brand-paleteal; }
+
+// Two-column ggsql cells: code/editor on the left, plot output on the right.
+// The cell gets an explicit height (slide design height is 700px, minus room
+// for the title); heights below it resolve as percentages of that.
+.reveal .slides section .cell:has(> .cell-output-display) {
+  display: flex;
+  gap: 1em;
+  align-items: stretch;
+  height: 540px;
+
+  // Note: post-hydration the runtime replaces the code scaffold with
+  // .ggsql-editor-wrapper, so it must be a flex item too
+  > .code-copy-outer-scaffold,
+  > .sourceCode.cell-code,
+  > .ggsql-editor-wrapper,
+  > .cell-output-display {
+    flex: 1 1 0;
+    min-width: 0;
+    height: 100%;
+  }
+
+  // Code background fills the column pre-hydration
+  > .code-copy-outer-scaffold pre.sourceCode,
+  > .sourceCode.cell-code pre.sourceCode {
+    height: 100%;
+  }
+
+  > .cell-output-display {
+    margin-top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    // Let the plot scale to the available height
+    > * {
+      max-width: 100%;
+      max-height: 100%;
+    }
+  }
+}
+
+// Editor fills its column; the runtime sets an inline pixel height on the
+// container, hence !important
+.reveal .slides section .ggsql-editor-wrapper {
+  margin: 0;
+}
+
+.reveal .slides section .ggsql-editor-container {
+  height: 100% !important;
+  width: 100% !important;
+}
+
+// Large centered equation text (e.g. "ggplot2 + SQL = ggsql")
+.reveal .slides section .equation {
+  font-size: 2em;
+  text-align: center;
+}
+
+// Vertically align images across columns
+.reveal .slides section .columns {
+  display: flex;
+  align-items: center;
+}
+
+// Center images horizontally by default
+.reveal .slides img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// Hand-crafted title slide
+#title-slide {
+  text-align: left;
+}
+
+// Center the hex logo
+#title-slide p:has(> img) {
+  text-align: center;
+}
+
+#title-slide .title {
+  font-size: 1.75em;
+  line-height: 1.2;
+  margin-bottom: 0.5em;
+}
+
+#title-slide .quarto-title-author {
+  font-size: 1.2em;
+}
+
+.slide h2 {
+  font-size: 1.5em
+}
+
+.cell-output table {
+  font-size: 20px;
+}
+
+// Small flat diamond echoing the layer rhombi in gog.svg, used in headings
+.rhombus {
+  display: inline-block;
+  width: 1.1em;
+  height: 0.55em;
+  margin-right: 0.35em;
+  clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+  vertical-align: -0.275em; // center the diamond on the text baseline
+  filter: drop-shadow(2 2 1px rgb(0, 0, 0));
+}
+
+.visually-hidden {
+  display: none;
+}
