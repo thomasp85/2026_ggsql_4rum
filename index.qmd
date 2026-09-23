@@ -577,3 +577,56 @@ LABEL
 ```
 
 * * *
+
+## So, what is this witchcraft actually?
+
+* ggsql is written in pure Rust
+* We currently provide:
+  - A CLI
+  - A Positron/VS Code extension
+  - A Jupyter kernel
+  - R and Python bindings
+  - A DuckDB extension
+  - A WebAssembly binary
+
+## ggsql in Positron
+
+* We are leveling up our SQL love in Positrion
+* Positron *will be* the best place to run SQL
+* ggsql is a big part of that equation
+
+## ggsql in Quarto/Jupyter
+
+* The Jupyter kernel makes ggsql work automatically
+* The R bindings provide a knitr engine
+  - Run R, Python, and ggsql in the same document
+  - Share data automatically between the processes
+
+## My data lives in PostgreSQL
+
+### Now what?
+
+* ggsql is built to interact directly with your database
+* Can interact with most through ODBC/ADBC driver support
+* (All) computations are send to the backend
+* Only data needed for plotting is returned
+
+## {.center}
+
+::: {style="text-align: center;"}
+We want to meet you were your data is
+:::
+
+## What's in the future?
+
+* gt inspired table formatting
+* patchwork inspired plot composition
+* Interactivity
+
+## {.center}
+
+::: {style="text-align: center;"}
+Questions
+
+[...or perhaps a demo of something cool]{style="font-size:0.7em;"}
+:::

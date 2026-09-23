@@ -244340,7 +244340,6 @@ async function initAndExecute(cells) {
   return ctx;
 }
 var DEBOUNCE_MS = 100;
-var DEFAULT_ASPECT = 504 / 540;
 function showPlot(cell) {
   if (!cell.plot) return;
   if (!cell.visContainer) {
@@ -244350,10 +244349,23 @@ function showPlot(cell) {
   }
   if (!cell.view) {
     const rect = cell.visContainer.getBoundingClientRect();
-    const aspect = rect.width > 0 && rect.height > 0 ? rect.width / rect.height : DEFAULT_ASPECT;
+    if (rect.width < 1 || rect.height < 1) {
+      if (!cell.deferObserver) {
+        cell.deferObserver = new ResizeObserver((entries2, obs) => {
+          const r = entries2[entries2.length - 1]?.contentRect;
+          if (r && r.width >= 1 && r.height >= 1) {
+            obs.disconnect();
+            cell.deferObserver = null;
+            showPlot(cell);
+          }
+        });
+        cell.deferObserver.observe(cell.visContainer);
+      }
+      return;
+    }
     cell.view = new PlotView(cell.visContainer, {
       idPrefix: `ggsql-cell-${cellCounter++}-`,
-      aspect
+      aspect: rect.width / rect.height
     });
   }
   cell.view.setPlot(cell.plot);
