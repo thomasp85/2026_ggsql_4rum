@@ -209,6 +209,22 @@
 <p><span class="quarto-title-author">Thomas Lin Pedersen</span></p>
 <p><span style="font-size:0.8em;">25th September 2026</span></p>
 </div>
+<aside class="notes">
+<p>Hi everyone</p>
+<p>Thank you so much for coming today</p>
+<p>I’m here to tell you all I can about ggsql:</p>
+<p>Our implementation of the grammar of graphics for SQL</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="why-am-i-speaking-to-you" class="slide level2">
 <h2>Why am I speaking to you?</h2>
@@ -217,19 +233,81 @@
 <li>If you have created graphics in R, my code has probably been involved</li>
 <li>I’m creating something new and exciting</li>
 </ul>
+<aside class="notes">
+<p>I work for Posit which, back in the days were known as RStudio</p>
+<p>I’ve done that since 2018</p>
+<p>I’ve been using R since my first year at the university (KVL) which was back in 2005</p>
+<p>I haven’t aged a day since then but I’ve grown more wise</p>
+<p>My main focus has for many years been graphics and data visualization</p>
+<p>But why am I speaking to you today? Because I’m creating something new and exciting</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section class="slide level2">
 
 
-<img data-src="assets/always_has_been.jpg" class="r-stretch"></section>
+<img data-src="assets/always_has_been.jpg" class="r-stretch"><aside class="notes">
+<p>I’ve been kinda blessed in this regard</p>
+<p>I’ve always loved creating packages for others to use</p>
+<p>Now it’s my full time job, which is rare in Open Source</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
 <section class="slide level2">
 
 
-<img data-src="assets/stickermap.png" class="r-stretch"></section>
+<img data-src="assets/stickermap.png" class="r-stretch"><aside class="notes">
+<p>So, I’ve been prolific when it comes to R packages</p>
+<p>And, while some are more niche than others, they are all exciting</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
 <section id="section" class="slide level2 center" data-auto-animate="true">
 <h2 data-id="quarto-animate-title"></h2>
 
-<img data-src="assets/ggplot2.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<img data-src="assets/ggplot2.png" class="quarto-figure quarto-figure-center r-stretch"><aside class="notes">
+<p>Many packages in some way ties into ggplot2</p>
+<p>If you are unfamiliar, it is a very popular visualization framework</p>
+<p>Has reigned supreme in R for 20 years or so</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
 <section id="section-1" class="slide level2 center" data-auto-animate="true">
 <h2 data-id="quarto-animate-title"></h2>
 <div class="columns">
@@ -238,6 +316,23 @@
 </div><div class="column">
 <p><img data-src="assets/8_years.jpg"></p>
 </div></div>
+<aside class="notes">
+<p>and one of my claims to fame is that I’ve maintained ggplot2 for 8 years now</p>
+<p>this is both a privilege and a burden</p>
+<p>Popularity begets constraints</p>
+<p>And cost/benefit wise you can’t justify anything but incremental polish</p>
+<p>But, thinking about visualization frameworks, syntax, theory, etc every day for 8 years+ does provide some very unique insights</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="section-2" class="slide level2 center" data-auto-animate="true">
 <h2 data-id="quarto-animate-title"></h2>
@@ -249,16 +344,65 @@
 </div><div class="column" style="width:35%;">
 <p><img data-src="assets/hex.png"></p>
 </div></div>
+<aside class="notes">
+<p>So, we’ve taken all of that insight and freed ourselves from the constraint of compatibility by moving to a language historically devoid of visual output</p>
+<p>and that is what ggsql is</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="why-am-i-speaking-to-you-1" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Why am I speaking to you?</h2>
 
-<img data-src="assets/hex.png" class="r-stretch"></section>
+<img data-src="assets/hex.png" class="r-stretch"><aside class="notes">
+<p>So, why am I talking to you?</p>
+<p>Because ggsql is very exciting, both to develop, but hopefully also as a user</p>
+<p>So, the rest of the talk will be about this</p>
+<p>I’ll talk a bit about the “Why?” which is somewhat broader than pure ggplot2 escapism</p>
+<p>I’ll show you what it looks like</p>
+<p>And I’ll touch on the future for the project</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
 <section id="section-3" class="slide level2 center">
 <h2></h2>
 <div style="text-align: center;">
 <p><span style="font-size:3em;">Why ggsql?</span></p>
 </div>
+<aside class="notes">
+<p>So, why ggsql?</p>
+<p>I think we were mentally bracing ourselves for that question when we unveiled it</p>
+<p>But it never came (much)</p>
+<p>So I guess the idea is somewhat as good as we thought</p>
+<p>Still, I’d like to take you through some of our thoughts so you can better understand what we are trying to achieve</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="why-ggsql" class="slide level2">
 <h2>Why ggsql?</h2>
@@ -268,6 +412,24 @@
 <li>They are massively under-served in tooling <em>and</em> visualization</li>
 <li>GoG and SQL just fits so good together that it would be criminal not to</li>
 </ul>
+<aside class="notes">
+<p>So part of this ties into a broader focus expansion at Posit</p>
+<p>We are closely tied to R, but our mission is about Data Science in general</p>
+<p>And we recognize that many people working with data, be they scientists or analysts are predominantly using SQL</p>
+<p>And honestly, we think we can do better, tooling wise, than what currently exist</p>
+<p>We want to embrace SQL in a big way</p>
+<p>But honestly, the gg and the sql just fits together so well, so even ignoring the above, once you recognize that you kinda have to build it</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="a-bit-about-sql" class="slide level2">
 <h2>A bit about SQL</h2>
@@ -278,6 +440,25 @@
 <li><strong>DECLARATIVE</strong></li>
 <li><strong>TABULAR</strong></li>
 </ul>
+<aside class="notes">
+<p>I’m not going to dive to much into SQL today</p>
+<p>SQL users here potentially knows it better than me</p>
+<p>R users probably knows enough about it</p>
+<p>But, just to sum up some key points</p>
+<p>It’s old - almost as old as C</p>
+<p>It has a strong theoretical foundation (shared with dplyr)</p>
+<p>It is one standard with many implementations</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="a-bit-about-grammar-of-graphics" class="slide level2">
 <h2>A bit about grammar of graphics</h2>
@@ -287,11 +468,45 @@
 <li><strong>DECLARATIVE</strong></li>
 <li><strong>TABULAR</strong></li>
 </ul>
+<aside class="notes">
+<p>So, I’m going to spend a bit more time on the grammar of graphics</p>
+<p>If you know ggplot2 this might be rehashing but chances are that you’ve used ggplot2 without fully diving into it’s theoretical backbone</p>
+<p>So, the grammar of graphics is a theory defining a set of semantics making it possible to describe plots</p>
+<p>Much like relational algebra does for data manipulation</p>
+<p>Developed by Leland Wilkinson in 2001</p>
+<p>Refined as a base for syntax by Hadley Wickham</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="a-bit-about-grammar-of-graphics-1" class="slide level2">
 <h2>A bit about grammar of graphics</h2>
 
-<img data-src="assets/gog.svg" class="r-stretch"></section>
+<img data-src="assets/gog.svg" class="r-stretch"><aside class="notes">
+<p>The original grammar diverts slightly from this, but we’ll stick with Hadleys version</p>
+<p>Often presented as a layer of semantics though this is a simplification</p>
+<p>The reality is that many of these terms interact in complex ways</p>
+<p>Let’s walk through them</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
 <section id="a-bit-about-grammar-of-graphics-2" class="slide level2 gog-focus-1">
 <h2>A bit about grammar of graphics</h2>
 <div class="columns">
@@ -527,6 +742,21 @@
 <li>In tabular form, one record per row (tidy format)</li>
 </ul>
 </div></div>
+<aside class="notes">
+<p>In general the grammar concerns tabular data</p>
+<p>One observation per row, variables as columns</p>
+<p>No data encoded into column names (no time-10, time-20, time-30 columns)</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="a-bit-about-grammar-of-graphics-3" class="slide level2 gog-focus-2">
 <h2>A bit about grammar of graphics</h2>
@@ -763,6 +993,22 @@
 <li>How columns relate to statistical properties</li>
 </ul>
 </div></div>
+<aside class="notes">
+<p>Different from assignment</p>
+<p>Not “price is x”</p>
+<p>But “x relates to price”</p>
+<p>A scale handles the “relates” part (coming up)</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="a-bit-about-grammar-of-graphics-4" class="slide level2 gog-focus-3">
 <h2>A bit about grammar of graphics</h2>
@@ -999,6 +1245,25 @@
 <li>E.g. binning for a histogram</li>
 </ul>
 </div></div>
+<aside class="notes">
+<p>Sometimes you just show the raw data (e.g.&nbsp;in a scatterplot)</p>
+<p>Many times you don’t</p>
+<p>The effectiveness of plots is often that they derive valuable statistics from data and show that</p>
+<p>stats I think, have been one of the more confusing part of ggplot2 for many users</p>
+<p>You generally don’t have to think about it because it is being applied automatically</p>
+<p>A histogram layer knows you want a binned count</p>
+<p>But the grammar separates the: what if you want the binned count but don’t care much for rectangles in your plot</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="a-bit-about-grammar-of-graphics-5" class="slide level2 gog-focus-4">
 <h2>A bit about grammar of graphics</h2>
@@ -1235,6 +1500,25 @@
 <li>Definition of mapping function</li>
 </ul>
 </div></div>
+<aside class="notes">
+<p>As talked about, scales define the conversion function between data and visual representation</p>
+<ul>
+<li>input type and range</li>
+<li>scale type</li>
+<li>(transformation)</li>
+<li>output type and range</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="a-bit-about-grammar-of-graphics-6" class="slide level2 gog-focus-5">
 <h2>A bit about grammar of graphics</h2>
@@ -1475,6 +1759,20 @@
 </ul></li>
 </ul>
 </div></div>
+<aside class="notes">
+<p>Usually what we think of when plotting because it is what we see</p>
+<p>Room for radicalism vs pragmatism here</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="a-bit-about-grammar-of-graphics-7" class="slide level2 gog-focus-6">
 <h2>A bit about grammar of graphics</h2>
@@ -1711,6 +2009,21 @@
 <li>and how…</li>
 </ul>
 </div></div>
+<aside class="notes">
+<p>For people unfamiliar with GoG, this is often the weirder one</p>
+<p>Think, small multiples</p>
+<p>But can be many non-obvious variations of this</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="a-bit-about-grammar-of-graphics-8" class="slide level2 gog-focus-7">
 <h2>A bit about grammar of graphics</h2>
@@ -1951,6 +2264,20 @@
 </ul></li>
 </ul>
 </div></div>
+<aside class="notes">
+<p>How do you put positions onto a flat paper</p>
+<p>Hints at an underlying general relationship not described by the grammar which I have deep thoughts about</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="a-bit-about-grammar-of-graphics-9" class="slide level2 gog-focus-8">
 <h2>A bit about grammar of graphics</h2>
@@ -2191,6 +2518,21 @@
 </ul></li>
 </ul>
 </div></div>
+<aside class="notes">
+<p>A bit lazily “all the rest”</p>
+<p>In some sense what gives your plot character</p>
+<p>(for better or worse)</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="sql-and-gog" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">SQL and GoG</h2>
@@ -2208,6 +2550,21 @@
 <p><span data-auto-animate-target="none">Speakable</span></p>
 </div>
 </div>
+<aside class="notes">
+<p>So, with that out of the way we can return to our</p>
+<p><em>they fit so well together</em></p>
+<p>argument</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="sql-and-gog-1" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">SQL and GoG</h2>
@@ -2234,6 +2591,24 @@
 </ul>
 </div>
 </div>
+<aside class="notes">
+<p>Not every tool needs a theoretical foundation but those that have are often superior</p>
+<p>When tools align foundationally they work well together</p>
+<p>I don’t know what this crazy timeline we’re on will bring.</p>
+<p>I do think we will write less code</p>
+<p>But I also think that we will read a lot of code</p>
+<p>Syntax is as important in this scenario</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="section-4" class="slide level2 center">
 <h2></h2>
@@ -2243,7 +2618,7 @@
 </section>
 <section id="data" class="slide level2">
 <h2><span class="rhombus" style="background:rgb(0,18,25);"> </span> Data</h2>
-<div id="42bd8679" class="cell" data-execution_count="1">
+<div id="1da21293" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource ggsql number-lines code-with-copy"><code class="sourceCode ggsql"><span id="cb1-1"><a href="" aria-label="1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> ggsql:penguins</span>
 <span id="cb1-2"><a href="" aria-label="2"></a><span class="kw">LIMIT</span> <span class="dv">14</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
@@ -2408,7 +2783,7 @@
 </section>
 <section id="mappings" class="slide level2">
 <h2><span class="rhombus" style="background:rgb(233,216,166);"> </span> Mappings</h2>
-<div id="a0afbe81" class="cell" data-execution_count="2">
+<div id="5283e160" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource ggsql number-lines code-with-copy"><code class="sourceCode ggsql"><span id="cb2-1"><a href="" aria-label="1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> ggsql:penguins</span>
 <span id="cb2-2"><a href="" aria-label="2"></a><span class="kw">VISUALIZE</span> </span>
 <span id="cb2-3"><a href="" aria-label="3"></a>  bill_len <span class="kw">AS</span> <span class="at">x</span>, </span>
@@ -2431,7 +2806,7 @@
 </section>
 <section id="statistics" class="slide level2">
 <h2><span class="rhombus" style="background: #F9F9F9;"> </span> Statistics</h2>
-<div id="42a446ad" class="cell" data-execution_count="3">
+<div id="129b558d" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource ggsql number-lines code-with-copy"><code class="sourceCode ggsql"><span id="cb3-1"><a href="" aria-label="1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> ggsql:penguins</span>
 <span id="cb3-2"><a href="" aria-label="2"></a><span class="kw">VISUALIZE</span> </span>
 <span id="cb3-3"><a href="" aria-label="3"></a>  species <span class="kw">AS</span> <span class="at">x</span>, </span>
@@ -2445,7 +2820,7 @@
 <span id="cb3-11"><a href="" aria-label="11"></a><span class="co">    aes(</span></span>
 <span id="cb3-12"><a href="" aria-label="12"></a><span class="co">      x = species, </span></span>
 <span id="cb3-13"><a href="" aria-label="13"></a><span class="co">      y = body_mass, </span></span>
-<span id="cb3-14"><a href="" aria-label="14"></a><span class="co">      color = species</span></span>
+<span id="cb3-14"><a href="" aria-label="14"></a><span class="co">      fill = species</span></span>
 <span id="cb3-15"><a href="" aria-label="15"></a><span class="co">    )</span></span>
 <span id="cb3-16"><a href="" aria-label="16"></a><span class="co">  ) + </span></span>
 <span id="cb3-17"><a href="" aria-label="17"></a><span class="co">  geom_boxplot()</span></span>
@@ -2461,7 +2836,7 @@
 </section>
 <section id="statistics-1" class="slide level2">
 <h2><span class="rhombus" style="background: #F9F9F9;"> </span> Statistics</h2>
-<div id="99b3976f" class="cell" data-execution_count="4">
+<div id="340e88a0" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource ggsql number-lines code-with-copy"><code class="sourceCode ggsql"><span id="cb4-1"><a href="" aria-label="1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> ggsql:penguins</span>
 <span id="cb4-2"><a href="" aria-label="2"></a><span class="kw">VISUALIZE</span> </span>
 <span id="cb4-3"><a href="" aria-label="3"></a>  bill_dep <span class="kw">AS</span> <span class="at">x</span>, </span>
@@ -2485,7 +2860,7 @@
 </section>
 <section id="statistics-2" class="slide level2">
 <h2><span class="rhombus" style="background: #F9F9F9;"> </span> Statistics</h2>
-<div id="ed9e64ce" class="cell" data-execution_count="5">
+<div id="fbd6ee24" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource ggsql number-lines code-with-copy"><code class="sourceCode ggsql"><span id="cb5-1"><a href="" aria-label="1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> ggsql:penguins</span>
 <span id="cb5-2"><a href="" aria-label="2"></a><span class="kw">VISUALIZE</span> </span>
 <span id="cb5-3"><a href="" aria-label="3"></a>  bill_dep <span class="kw">AS</span> <span class="at">x</span>, </span>
@@ -2508,7 +2883,7 @@
 </section>
 <section id="scales" class="slide level2">
 <h2><span class="rhombus" style="background:rgb(148,210,189);"> </span> Scales</h2>
-<div id="04e61814" class="cell" data-execution_count="6">
+<div id="12bce1d5" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource ggsql number-lines code-with-copy"><code class="sourceCode ggsql"><span id="cb6-1"><a href="" aria-label="1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> ggsql:penguins</span>
 <span id="cb6-2"><a href="" aria-label="2"></a><span class="kw">VISUALIZE</span> </span>
 <span id="cb6-3"><a href="" aria-label="3"></a>  bill_dep <span class="kw">AS</span> <span class="at">x</span>, </span>
@@ -2543,7 +2918,7 @@
 </section>
 <section id="geometries" class="slide level2">
 <h2><span class="rhombus" style="background:rgb(10,147,150);"> </span> Geometries</h2>
-<div id="80d6e18f" class="cell" data-execution_count="7">
+<div id="a461ba3b" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource ggsql number-lines code-with-copy"><code class="sourceCode ggsql"><span id="cb7-1"><a href="" aria-label="1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> ggsql:penguins</span>
 <span id="cb7-2"><a href="" aria-label="2"></a><span class="kw">VISUALIZE</span> </span>
 <span id="cb7-3"><a href="" aria-label="3"></a>  species <span class="kw">AS</span> <span class="at">x</span>, </span>
@@ -2571,7 +2946,7 @@
 </section>
 <section id="facets" class="slide level2">
 <h2><span class="rhombus" style="background:rgb(0,95,115);"> </span> Facets</h2>
-<div id="e3380e8d" class="cell" data-execution_count="8">
+<div id="f0e17d8e" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource ggsql number-lines code-with-copy"><code class="sourceCode ggsql"><span id="cb8-1"><a href="" aria-label="1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> ggsql:penguins</span>
 <span id="cb8-2"><a href="" aria-label="2"></a><span class="kw">VISUALIZE</span> </span>
 <span id="cb8-3"><a href="" aria-label="3"></a>  bill_len <span class="kw">AS</span> <span class="at">x</span>, </span>
@@ -2590,7 +2965,7 @@
 </section>
 <section id="facets-1" class="slide level2">
 <h2><span class="rhombus" style="background:rgb(0,95,115);"> </span> Facets</h2>
-<div id="587194a7" class="cell" data-execution_count="9">
+<div id="d74991d2" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource ggsql number-lines code-with-copy"><code class="sourceCode ggsql"><span id="cb9-1"><a href="" aria-label="1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> ggsql:penguins</span>
 <span id="cb9-2"><a href="" aria-label="2"></a><span class="kw">VISUALIZE</span> </span>
 <span id="cb9-3"><a href="" aria-label="3"></a>  bill_len <span class="kw">AS</span> <span class="at">x</span>, </span>
@@ -2611,7 +2986,7 @@
 </section>
 <section id="coordinates" class="slide level2">
 <h2><span class="rhombus" style="background:rgb(178,137,177);"> </span> Coordinates</h2>
-<div id="14960d51" class="cell" data-execution_count="10">
+<div id="2b301cd9" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource ggsql number-lines code-with-copy"><code class="sourceCode ggsql"><span id="cb10-1"><a href="" aria-label="1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> ggsql:penguins</span>
 <span id="cb10-2"><a href="" aria-label="2"></a><span class="kw">VISUALIZE</span> species <span class="kw">AS</span> <span class="at">fill</span></span>
 <span id="cb10-3"><a href="" aria-label="3"></a><span class="kw">DRAW</span> <span class="dt">bar</span></span>
@@ -2627,10 +3002,10 @@
 </section>
 <section id="coordinates-1" class="slide level2">
 <h2><span class="rhombus" style="background:rgb(178,137,177);"> </span> Coordinates</h2>
-<div id="6b9cde67" class="cell visually-hidden" data-execution_count="11">
+<div id="b88648ea" class="cell visually-hidden" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource ggsql number-lines code-with-copy"><code class="sourceCode ggsql"><span id="cb11-1"><a href="" aria-label="1"></a>INSTALL spatial;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="bc7a7d60" class="cell" data-execution_count="12">
+<div id="be43983a" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource ggsql number-lines code-with-copy"><code class="sourceCode ggsql"><span id="cb12-1"><a href="" aria-label="1"></a><span class="kw">WITH</span> data(island, lat, lon) <span class="kw">AS</span> (</span>
 <span id="cb12-2"><a href="" aria-label="2"></a>  <span class="kw">VALUES</span></span>
 <span id="cb12-3"><a href="" aria-label="3"></a>    (<span class="st">'Torgersen'</span>, <span class="dv">-64.77</span>, <span class="dv">-64.08</span>),</span>
@@ -2663,7 +3038,7 @@
 </section>
 <section id="theme-1" class="slide level2">
 <h2><span class="rhombus" style="background:rgb(219,100,100);"> </span> Theme</h2>
-<div id="f0373caa" class="cell" data-execution_count="13">
+<div id="c0309904" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource ggsql number-lines code-with-copy"><code class="sourceCode ggsql"><span id="cb13-1"><a href="" aria-label="1"></a><span class="kw">VISUALIZE</span> species <span class="kw">AS</span> <span class="at">fill</span>, species <span class="kw">AS</span> <span class="at">x</span> <span class="kw">FROM</span> ggsql:penguins</span>
 <span id="cb13-2"><a href="" aria-label="2"></a><span class="kw">DRAW</span> <span class="dt">bar</span></span>
 <span id="cb13-3"><a href="" aria-label="3"></a><span class="kw">SCALE</span> <span class="at">fill</span> <span class="kw">TO</span> (<span class="st">'steelblue'</span>, <span class="st">'goldenrod'</span>, <span class="st">'forestgreen'</span>)</span>
@@ -2693,6 +3068,24 @@
 <li>A WebAssembly binary</li>
 </ul></li>
 </ul>
+<aside class="notes">
+<p>ggsql is, in some sense, many things</p>
+<p>we have grappled with naming exactly what it is</p>
+<p>is it a package</p>
+<p>an SQL dialect</p>
+<p>A reference implementation of a new derived programming language</p>
+<p>maybe the fine print doesn’t matter that much</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="ggsql-in-positron" class="slide level2">
 <h2>ggsql in Positron</h2>
@@ -2701,6 +3094,21 @@
 <li>Positron <em>will be</em> the best place to run SQL</li>
 <li>ggsql is a big part of that equation</li>
 </ul>
+<aside class="notes">
+<p>As I hinted at in the beginning, we are aiming a huge spotlight on SQL</p>
+<p>We want you to want to use positron for SQL work</p>
+<p>By extension, even if ggsql can be used in many ways, we want positron to give the best experience</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="ggsql-in-quartojupyter" class="slide level2">
 <h2>ggsql in Quarto/Jupyter</h2>
@@ -2712,6 +3120,20 @@
 <li>Share data automatically between the processes</li>
 </ul></li>
 </ul>
+<aside class="notes">
+<p>A notebook is probably the easiest entry for now</p>
+<p>Just install the kernel and create a quarto document with ggsql code blocks</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="my-data-lives-in-postgresql" class="slide level2">
 <h2>My data lives in PostgreSQL</h2>
@@ -2722,12 +3144,40 @@
 <li>(All) computations are send to the backend</li>
 <li>Only data needed for plotting is returned</li>
 </ul>
+<aside class="notes">
+<p>During all this I’ve used built in data or perhaps a csv file here and there</p>
+<p>You probably don’t work exclusively with penguin research</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="section-5" class="slide level2 center">
 <h2></h2>
 <div style="text-align: center;">
 <p>We want to meet you were your data is</p>
 </div>
+<aside class="notes">
+<p>Bottom line is we don’t want to force yet-another-tool on you</p>
+<p>We just want to meet you were you currently are</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="whats-in-the-future" class="slide level2">
 <h2>What’s in the future?</h2>
@@ -2749,7 +3199,7 @@
   <div class="quarto-auto-generated-content" style="display: none;">
 <p><img src="assets/icon.svg" class="slide-logo"></p>
 <div class="footer footer-default">
-<p><a href="https://ggsql.org">ggsql</a></p>
+<p><a href="https://ggsql.org" data-preview-link="true">ggsql</a></p>
 </div>
 </div></div>
 
